@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.5)
+project(InventoryManager)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# Configuración de Qt
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# Encontrar Qt5
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Sql)
+
+# Todos los archivos juntos
+set(SOURCE_FILES
+    main.cpp
+    mainwindow.cpp
+    databasemanager.cpp
+    mainwindow.h
+    databasemanager.h
+    mainwindow.ui
+)
+
+# Crear ejecutable
+add_executable(InventoryManager ${SOURCE_FILES})
+
+# Enlazar librerías
+target_link_libraries(InventoryManager
+    Qt5::Core
+    Qt5::Widgets
+    Qt5::Sql
+)
+
+message(STATUS "Proyecto configurado: InventoryManager")
